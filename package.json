@@ -1,0 +1,35 @@
+{
+  "name": "@lmonteiro/mcp-store-scraper",
+  "version": "1.0.0",
+  "description": "MCP server for Google Play and App Store scraping",
+  "keywords": ["mcp", "google-play", "app-store", "scraper", "modelcontextprotocol"],
+  "author": "lmonteiro",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "bin": {
+    "mcp-store-scraper": "dist/index.js"
+  },
+  "files": ["dist"],
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node18 --outfile=dist/index.js --external:google-play-scraper --external:app-store-scraper",
+    "prepublishOnly": "npm run build"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0",
+    "app-store-scraper": "^0.18.0",
+    "google-play-scraper": "^9.1.0",
+    "zod": "^3.23.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.28.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lmonteiro/mcp-store-scraper.git"
+  }
+}
