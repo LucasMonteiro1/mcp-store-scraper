@@ -1,6 +1,6 @@
 {
   "name": "mcp-store-scraper",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "MCP server for Google Play and App Store scraping",
   "keywords": ["mcp", "google-play", "app-store", "scraper", "modelcontextprotocol"],
   "author": "LucasMonteiro1",
