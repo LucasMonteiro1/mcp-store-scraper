@@ -1,5 +1,5 @@
 {
-  "name": "@lucasmonteiro1/mcp-store-scraper",
+  "name": "@lucas.monteiro/mcp-store-scraper",
   "version": "1.0.0",
   "description": "MCP server for Google Play and App Store scraping",
   "keywords": ["mcp", "google-play", "app-store", "scraper", "modelcontextprotocol"],

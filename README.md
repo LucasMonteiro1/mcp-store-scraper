@@ -11,7 +11,7 @@ Add to your MCP client config (e.g. `~/.kiro/settings/mcp.json`):
   "mcpServers": {
     "store-scraper": {
       "command": "npx",
-      "args": ["-y", "@lucasmonteiro1/mcp-store-scraper"],
+      "args": ["-y", "@lucas.monteiro/mcp-store-scraper"],
       "disabled": false,
       "autoApprove": [
         "gplay_app", "gplay_search", "gplay_reviews", "gplay_similar",
