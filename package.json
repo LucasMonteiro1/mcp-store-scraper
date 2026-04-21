@@ -38,6 +38,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/LucasMonteiro1/mcp-store-scraper.git"
+    "url": "git+https://github.com/LucasMonteiro1/mcp-store-scraper.git"
   }
 }
