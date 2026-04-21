@@ -41,3 +41,10 @@ Add to your MCP client config (e.g. `~/.kiro/settings/mcp.json`):
 | `appstore_search` | Search apps |
 | `appstore_reviews` | Get app reviews |
 | `appstore_similar` | Get similar apps |
+
+## Credits
+
+This package is powered by two great open source libraries:
+
+- **[google-play-scraper](https://github.com/facundoolano/google-play-scraper)** by [@facundoolano](https://github.com/facundoolano) — scrapes app data from the Google Play Store
+- **[app-store-scraper](https://github.com/facundoolano/app-store-scraper)** by [@facundoolano](https://github.com/facundoolano) — scrapes app data from the Apple App Store
