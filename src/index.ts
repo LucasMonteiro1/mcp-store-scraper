@@ -2,9 +2,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { z } from "zod";
 import gplay from "google-play-scraper";
-
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const store = require("app-store-scraper") as any;
+import store from "app-store-scraper";
 
 const server = new McpServer({
   name: "store-scraper",
