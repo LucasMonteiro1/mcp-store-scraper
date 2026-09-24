@@ -1,11 +1,11 @@
 name: Auto-update scrapers
 
 # Diariamente (e sob demanda) atualiza app-store-scraper e google-play-scraper
-# para a versao mais recente. Se algo mudou: sobe um patch, empurra o commit/tag
-# e dispara o publish.yml. O consumidor que roda `npx -y mcp-store-scraper@latest`
-# passa a receber a nova versao do MCP e, com ela, o scraper mais recente.
+# para a versao mais recente. Se algo mudou: commita, empurra na main e dispara
+# o publish.yml (que faz bump + tag + publish em cima).
 #
-# Totalmente automatico: nao exige nenhum segredo/PAT alem do GITHUB_TOKEN padrao.
+# O push aqui usa o GITHUB_TOKEN padrao (nao dispara o release sozinho), por isso
+# chamamos o publish.yml explicitamente via workflow_dispatch. Sem PAT.
 
 on:
   schedule:
@@ -13,8 +13,8 @@ on:
   workflow_dispatch: {}
 
 permissions:
-  contents: write # empurrar commit + tag
-  actions: write # disparar o publish.yml via workflow_dispatch
+  contents: write # empurrar o commit de atualizacao
+  actions: write # disparar o publish.yml
 
 jobs:
   update:
@@ -43,22 +43,17 @@ jobs:
             git diff -- package.json
           fi
 
-      - name: Sanity build
-        if: steps.diff.outputs.changed == 'true'
-        run: npm run build
-
-      - name: Commit and version bump
+      - name: Commit and push
         if: steps.diff.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add package.json package-lock.json
           git commit -m "chore(deps): update store scrapers to latest"
-          npm version patch -m "chore(release): %s"
-          git push origin HEAD --follow-tags
+          git push origin HEAD:main
 
-      - name: Trigger publish
+      - name: Trigger release
         if: steps.diff.outputs.changed == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh workflow run publish.yml --ref "${{ github.ref_name }}"
+        run: gh workflow run publish.yml --ref main
