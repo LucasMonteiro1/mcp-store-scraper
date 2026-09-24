@@ -4,6 +4,7 @@ on:
   push:
     tags:
       - 'v*'
+  workflow_dispatch: {} # permite que o auto-update dispare a publicacao sem PAT
 
 permissions:
   id-token: write  # Required for OIDC
